@@ -1,0 +1,5 @@
+# Rule
+User-agent: *
+Allow: /
+
+Sitemap: https://vk3105.github.io/sitemap.xml
