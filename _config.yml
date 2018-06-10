@@ -55,9 +55,9 @@ search                   : true # true, false (default)
 search_full_content      : true # true, false (default)
 search_provider          : algolia # lunr (default), algolia
 algolia:
-  application_id         : J4MI82HU7N # YOUR_APPLICATION_ID
-  index_name             : binary_lab
-  search_only_api_key    : bd132afc523e27bbc2c6bd24fad8d01d # YOUR_SEARCH_ONLY_API_KEY
+  application_id         : QPCJ3B6C27 # YOUR_APPLICATION_ID
+  index_name             : MyBlog
+  search_only_api_key    : 0d7e101b5b278a1538f1f6a340bab90d # YOUR_SEARCH_ONLY_API_KEY
   powered_by             : true # true (default), false
   files_to_exclude:
     - 404.md
