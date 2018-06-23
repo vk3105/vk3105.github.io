@@ -211,8 +211,86 @@ public static ArrayList<Integer> sieveOfEratosthene(int n) {
 }
 ```
 
-### Time Complexity
-$$O(N log (log N))$$ [Why?](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes#Computational_analysis)
+### Complexity
+Time Complexity = $$O(n \log (\log n))$$ operations [Why?](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes#Computational_analysis) \\
+Space Complexity = $$O(n)$$ memory.
+
+## Segmented Sieve of Eratosthenes:
+
+### Limitations of Sieve of Eratosthenes
+Any computer programs efficiency depends upon time and memory. In computer world these two things are always inversely proportional to each other. Sieve of Eratosthenes suffers from memory it requires to compute primes. And since its also not cache friendly, its hard to do find primes for bigger inputs.
+{: .text-justify}
+
+### Segmented Sieve:
+The concept is to divide the input, $$n$$, into different segments and compute primes in each segment. This algorithm basically sieves some of the initial primes based on the input, $$n$$. Lets see the steps in this algorithm,
+{: .text-justify}
+
+1. Divide each segment such that the size of each segment is at-most $$\sqrt{n}$$.
+2. Using Sieve of Eratosthenes find all the primes in the first segment below $$\sqrt{n}$$ and store them in an array.
+3. For every segment other than first segment, we will make two variable $$segmentStart$$ and $$segmentEnd$$ to keep track of current segment start and end points respectively.
+  - $$segmentStart$$ and $$segmentEnd$$ will be initialized after completion of one segment by $$segmentLength$$.
+  - Create a temporary array just like we did in Sieve of Eratosthenes to mark the primes.
+  - Loop over all primes found in step 1 and mark its multiples in the current segment.
+{: .text-justify}
+
+### Code
+```ruby
+/**
+ * A function to illustrate segmented Sieve of Eratosthenes
+ *
+ * @param n
+ *            max number upto which we have to find primes.
+ * @return An array list of all the primes below n.
+ */
+public static ArrayList<Integer> segmentedSeive(int n) {
+
+  int segmentLength = (int) (Math.floor(Math.sqrt(n)) + 1);
+  ArrayList<Integer> initialPrimeList = sieveOfEratosthenes(segmentLength);
+
+  ArrayList<Integer> primeList = new ArrayList<>();
+  primeList.addAll(initialPrimeList);
+
+  int segmentStart = segmentLength;
+  int segmentEnd = 2 * segmentLength;
+
+  while (segmentStart < n) {
+
+    if (segmentEnd >= n) {
+      segmentEnd = n;
+    }
+
+    boolean prime[] = new boolean[segmentLength + 1];
+
+    for (int i = 0; i < initialPrimeList.size(); i++) {
+
+      int lowerLimit = (int) (Math.floor(segmentStart / initialPrimeList.get(i)) * initialPrimeList.get(i));
+
+      if (lowerLimit < segmentStart) {
+        lowerLimit += initialPrimeList.get(i);
+      }
+
+      for (int j = lowerLimit; j <= segmentEnd; j += initialPrimeList.get(i)) {
+        prime[j - segmentStart] = true;
+      }
+    }
+
+    for (int i = segmentStart; i <= segmentEnd; i++) {
+      if (!prime[i - segmentStart]) {
+        primeList.add(i);
+      }
+    }
+
+    segmentStart = segmentStart + segmentLength;
+    segmentEnd = segmentEnd + segmentLength;
+  }
+
+  return primeList;
+}
+```
+
+### Complexity
+Time Complexity = $$O(n \log (\log n))$$ operations \\
+Space Complexity = $$O(\sqrt{n})$$ memory.
 
 ## Sieve of Atkins
 The algorithm is governed by a few set of rules, which are as follows:
@@ -297,8 +375,8 @@ static ArrayList<Integer> sieveOfAtkin(int n) {
 ```
 
 
-### Time Complexity
-$$O(N /{log (log N)})$$ [Why ?](https://en.wikipedia.org/wiki/Sieve_of_Atkin#Computational_complexity)
+### Complexity
+Time Complexity = $$O(N /{log (log N)})$$ [Why ?](https://en.wikipedia.org/wiki/Sieve_of_Atkin#Computational_complexity)
 
 ## References and Further Readings
 * [Prime Numbers](https://en.wikipedia.org/wiki/Prime_number)
