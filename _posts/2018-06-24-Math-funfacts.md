@@ -6,9 +6,9 @@ categories:
 tags:
   - Trailing Zeroes in Factorial
   - Highest Power in Factorial
+  - Triangular numbers
   - FunFacts
 toc: true
-toc_sticky: true
 
 ---
 
@@ -211,5 +211,27 @@ public static long numberOfTrailingZeroesInAFactorial(long num) {
 ### Complexity
 For a given factorial $$N!$$, complexity = $$O(log(a))$$.
 {: .text-justify}
+
+
+## Sum of first N natural numbers
+
+### Sum of first $$n$$ Natural numbers
+{: .text-justify}
+
+$$(1+2+ \dots + n) \ = \ \frac{n(n+1)}{2}$$
+
+These are also called **Triangular numbers**
+{: .text-justify}
+
+### The sum of square of first $$n$$ terms of natural number
+{: .text-justify}
+
+$$(1^2 + 2^2 + \dots + n^2) \ = \ \frac{n(n+1)(2n+1)}{6} $$
+
+### The sum of cube of first $$n$$ terms of natural number
+{: .text-justify}
+
+$$(1^3 + 2^3 + \dots + n^3) \ = \ \Bigg ( \frac{n(n+1)}{2} \Bigg )^2 $$
+
 
 ## References
