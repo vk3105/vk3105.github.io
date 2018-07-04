@@ -78,8 +78,13 @@ Since we are iterating from $$1$$ to $$\sqrt{N}$$ complexity will be $$O(\sqrt{N
 
 ## Concept and Theory for Prime Factorization
 Prime factors can be calculated by some precalulations or calculating at runtime. It will depend upon how often you have to factorize a number. If you have to do multiple queries than precalculations is optimal else if once or twice than runtime will be better.
+{: .text-justify}
 
 By precalulations I meant storing the prime numbers below the maximum number you would expect in a given situation by using [Sieve of eratosthenes](/math/Prime-Numbers/#sieve-of-eratosthenes).
+{: .text-justify}
+
+You can get the prime list from this site too [Prime List](http://www.primos.mat.br/indexen.html).
+{: .text-justify}
 
 ### Code
 ```ruby
@@ -390,3 +395,4 @@ public static long getDivisorsSum(long num) throws Exception {
 
 ## References and Further Readings
 * [Integer factorization](https://en.wikipedia.org/wiki/Integer_factorization)
+* [Prime List](http://www.primos.mat.br/indexen.html)
